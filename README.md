@@ -59,4 +59,16 @@ $ bower install angular.io --save
 
 The library support both Directive operation and Service operation.
 
-The documentation is on the way.
+The documentation is on the way. The simple description on directive is:
+
+The `io="name" io-event="expression"` equals to :
+
+```js
+var someController = ['$scope', '$io', function($scope, $io) {
+  $io.name.on('event', function() {
+    $scope.$apply(function() {
+      expression;  //Variable attached to current $scope
+    };
+  };
+}];
+```
