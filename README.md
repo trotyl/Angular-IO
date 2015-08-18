@@ -51,10 +51,12 @@ $ npm install angular-io --save
 Install via Bower:
 
 ```bash
-$ bower install angular-io --save
+$ bower install angular.io --save
 ```
 
 
 ## Usage
 
-The library can both
+The library support both Directive operation and Service operation.
+
+The documentation is on the way.
