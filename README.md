@@ -6,9 +6,9 @@ Providing the capability for just writing declarative code benefit from Angular 
 
 
 ```html
-<html ng-app="myApp">
+<html ng-app="testApp">
   <head></head>
-  <body ng-controller="myController">
+  <body ng-controller="testController">
     <div>
       {{ status }}
       <ul io io-message="messages.push($data)">
