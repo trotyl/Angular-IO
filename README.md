@@ -55,6 +55,6 @@ $ bower install angular-io --save
 ```
 
 
-## Features
+## Usage
 
-Pending...
+The library can both

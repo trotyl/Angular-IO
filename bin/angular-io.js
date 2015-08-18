@@ -15,9 +15,9 @@ angular.module('angular-io', [])
       socketCache[name] = io(url);
     };
 
-    this.$get = function () {
+    this.$get = [function () {
       return socketCache;
-    };
+    }];
 
   }])
 
@@ -33,6 +33,7 @@ angular.module('angular-io', [])
             var attr = attrName.replace('io', '').toLowerCase();
             var callback = iAttrs[attrName];
             socket.on(attr, function (data) {
+              console.log(data);
               scope.$apply($parse(callback)(scope, {$data: data}));
             })
           }

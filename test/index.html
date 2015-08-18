@@ -29,9 +29,9 @@
             }])
             .controller('testController', ['$scope', '$io', function($scope, $io) {
                 $io.default.emit('message', 'I am in.');
-                $io.default.on('toast', function (news) {
+                $io.default.on('toast', function (toast) {
                     $scope.$apply(function () {
-                        $scope.status = news;
+                        $scope.status = toast;
                     })
                 });
                 $scope.status = 'Idle';
