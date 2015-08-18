@@ -74,3 +74,10 @@ var someController = ['$scope', '$io', function($scope, $io) {
   };
 }];
 ```
+
+The default socket is created by `$ioProvider.connect(url)` .
+
+The other sockets are created by `$ioProvider.register(name, url)` .
+
+All of the their functionality are same.
+
