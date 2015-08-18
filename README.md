@@ -2,7 +2,7 @@
 
 A concise, reliable and powerful library to make use of [Socket.io](http://socket.io/) in [Angular.js](https://angularjs.org/).
 
-Providing the capability for just writing declarative code benefit from Angular Directive.
+Providing the capability for just writing __declarative__ code benefit from Angular Directive.
 
 
 ```html
@@ -38,6 +38,8 @@ Providing the capability for just writing declarative code benefit from Angular 
   </body>
 </html>
 ```
+
+An application can use Socket.io even with only directive without the existence of a controller.
 
 
 ##Installation
