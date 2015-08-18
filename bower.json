@@ -15,6 +15,9 @@
     "Angular-IO",
     "Angular-Socket"
   ],
+  "moduleType": [
+    "globals"
+  ],
   "license": "MIT",
   "ignore": [
     "**/.*",
