@@ -1,26 +1,29 @@
 {
   "name": "angular-io",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A concise, reliable and powerful library to make use of Socket.io in Angular.js.",
-  "main": "bin/angular-socket.js",
+  "main": "bin/angular-io.js",
   "scripts": {
     "test": "mocha --reporter spec --bail --check-leaks test/ --recursive"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trotyl/Angular-Socket.git"
+    "url": "git+https://github.com/trotyl/Angular-IO.git"
   },
   "keywords": [
     "Angular",
+    "Angular.js",
     "Socket.io",
-    "WebSocket"
+    "WebSocket",
+    "Angular-IO",
+    "Angular-Socket"
   ],
   "author": "Trotyl <trotyl@qq.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/trotyl/Angular-Socket/issues"
+    "url": "https://github.com/trotyl/Angular-IO/issues"
   },
-  "homepage": "https://github.com/trotyl/Angular-Socket#readme",
+  "homepage": "https://github.com/trotyl/Angular-IO#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
