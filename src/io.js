@@ -21,7 +21,7 @@ angular.module('angular-io', [])
 
   }])
 
-  .directive('io', ['$io', 'lowercaseFilter', function ($io, lowercaseFilter) {
+  .directive('io', ['$parse', '$io', function ($parse, $io) {
     return {
       restrict: 'A',
       scope: true,
@@ -29,9 +29,11 @@ angular.module('angular-io', [])
         var socketName = iAttrs[io] || 'default';
         var socket = $io[socketName];
         for(var attrName in iAttrs) {
-          if(attrName.startWith && attrName.startWith('io') && attrName != 'io') {
-            socket.on(lowercaseFilter(attrName.replace('io', '')), function (data) {
-              $parse(iAttrs[attrName])(scope, {$data: data});
+          if(attrName.startsWith && attrName.startsWith('io') && attrName != 'io') {
+            var attr = attrName.replace('io', '').toLowerCase();
+            var callback = iAttrs[attrName];
+            socket.on(attr, function (data) {
+              scope.$apply($parse(callback)(scope, {$data: data}));
             })
           }
         }

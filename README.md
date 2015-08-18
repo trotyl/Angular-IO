@@ -9,21 +9,28 @@ Providing the capability for just writing declarative code benefit from Angular 
 <html ng-app="myApp">
   <head></head>
   <body ng-controller="myController">
-    <div io io-connect="status = 'Connected'" io-error="status = 'Error'">
+    <div>
       {{ status }}
       <ul io io-message="messages.push($data)">
-        <li ng-repeat="message in messages">
+        <li ng-repeat="message in messages track by $index">
+          {{ message }}
+        </li>
       </ul>
       <input type="text" ng-model="myMessage"/>
       <button io ng-click="$io.emit('message', myMessage)">Send</button>
     </div>
     <script>
-      angular.module('myApp', ['angular-socket'])
-        .config(['$ioProvider', function(ioProvider) {
-          ioProvider.connect('http://localhost');
+      angular.module('testApp', ['angular-io'])
+        .config(['$ioProvider', function($ioProvider) {
+            $ioProvider.connect();
         }])
-        .controller('myController', ['$scope', '$io', function($scope, $io) {
+        .controller('testController', ['$scope', '$io', function($scope, $io) {
           $io.default.emit('message', 'I am in.');
+          $io.default.on('toast', function (data) {
+            $scope.$apply(function () {
+              $scope.status = data;
+            })
+          });
           $scope.status = 'Idle';
           $scope.messages = [];
         }]);

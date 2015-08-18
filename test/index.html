@@ -6,10 +6,12 @@
 </head>
 <body ng-controller="testController">
 
-    <div io io-connect="status = 'Connected'" io-error="status = 'Error'">
+    <div>
         {{ status }}
         <ul io io-message="messages.push($data)">
-            <li ng-repeat="message in messages">
+            <li ng-repeat="message in messages track by $index">
+                {{ message }}
+            </li>
         </ul>
         <label>
             <input type="text" ng-model="myMessage"/>
@@ -23,10 +25,15 @@
     <script type="text/javascript">
         angular.module('testApp', ['angular-io'])
             .config(['$ioProvider', function($ioProvider) {
-                $ioProvider.connect('http://socket.io/');
+                $ioProvider.connect();
             }])
             .controller('testController', ['$scope', '$io', function($scope, $io) {
                 $io.default.emit('message', 'I am in.');
+                $io.default.on('toast', function (news) {
+                    $scope.$apply(function () {
+                        $scope.status = news;
+                    })
+                });
                 $scope.status = 'Idle';
                 $scope.messages = [];
             }]);
