@@ -1,5 +1,5 @@
 {
-  "name": "angular-socket",
+  "name": "angular-io",
   "version": "0.0.1",
   "description": "A concise, reliable and powerful library to make use of Socket.io in Angular.js.",
   "main": "bin/angular-socket.js",

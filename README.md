@@ -1,4 +1,4 @@
-# Angular Socket
+# Angular-IO
 
 A concise, reliable and powerful library to make use of [Socket.io](http://socket.io/) in [Angular.js](https://angularjs.org/).
 
@@ -38,13 +38,13 @@ Providing the capability for just writing declarative code benefit from Angular 
 Install via Npm:
 
 ```bash
-$ npm install angular-socket
+$ npm install angular-io --save
 ```
 
 Install via Bower:
 
 ```bash
-$ bower install angular-socket
+$ bower install angular-io --save
 ```
 
 
