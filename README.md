@@ -15,7 +15,7 @@ Providing the capability for just writing declarative code benefit from Angular 
         <li ng-repeat="message in messages">
       </ul>
       <input type="text" ng-model="myMessage"/>
-      <button io ng-click="$emit('message', myMessage)">Send</button>
+      <button io ng-click="$io.emit('message', myMessage)">Send</button>
     </div>
     <script>
       angular.module('myApp', ['angular-socket'])
