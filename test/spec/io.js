@@ -1,3 +1,5 @@
-/**
- * Created by Trotyl on 15/8/18.
- */
+xdescribe('$io ', function () {
+    beforeEach(module('angular-io'));
+
+
+});

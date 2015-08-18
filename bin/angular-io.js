@@ -1,48 +1,33 @@
 angular.module('angular-io', [])
 
-  .provider('$ioProvider', [function() {
+  .provider('$io', [function() {
     if(!io) {
       throw new ReferenceError('The Socket.io script is needed!');
     }
 
     var socketCache = {};
 
-    var self = this;
-
     this.connect = function(url) {
-      self.register('default', url);
+      this.register('default', url);
     };
 
     this.register = function (name, url) {
       socketCache[name] = io(url);
     };
 
-    this.getSockets = function () {
+    this.$get = function () {
       return socketCache;
     };
 
-    this.getSocket = function (name) {
-      return socketCache[name];
-    };
-
   }])
 
-  .service('$io', ['$ioProvider', function ($ioProvider) {
-    var sockets = $ioProvider.getSockets();
-
-    for(var name in sockets) {
-      this[name] = sockets[name];
-    }
-
-  }])
-
-  .directive('io', ['$ioProvider', 'lowercaseFilter', function ($ioProvider, lowercaseFilter) {
+  .directive('io', ['$io', 'lowercaseFilter', function ($io, lowercaseFilter) {
     return {
       restrict: 'A',
       scope: true,
       link: function (scope, iElement, iAttrs, controller) {
         var socketName = iAttrs[io] || 'default';
-        var socket = $ioProvider.getSocket(socketName);
+        var socket = $io[socketName];
         for(var attrName in iAttrs) {
           if(attrName.startWith && attrName.startWith('io') && attrName != 'io') {
             socket.on(lowercaseFilter(attrName.replace('io', '')), function (data) {

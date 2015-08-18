@@ -22,8 +22,8 @@ Providing the capability for just writing declarative code benefit from Angular 
         .config(['$ioProvider', function(ioProvider) {
           ioProvider.connect('http://localhost');
         }])
-        .controller('myController', ['$scope', function($scope, $io) {
-          $io.default.emit('message', 'I am in.");
+        .controller('myController', ['$scope', '$io', function($scope, $io) {
+          $io.default.emit('message', 'I am in.');
           $scope.status = 'Idle';
           $scope.messages = [];
         }]);

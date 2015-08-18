@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-controller="testController">
+
+    <div io io-connect="status = 'Connected'" io-error="status = 'Error'">
+        {{ status }}
+        <ul io io-message="messages.push($data)">
+            <li ng-repeat="message in messages">
+        </ul>
+        <label>
+            <input type="text" ng-model="myMessage"/>
+        </label>
+        <button io ng-click="$io.emit('message', myMessage)">Send</button>
+    </div>
+
+    <script type="text/javascript" src="../lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../lib/socket.io-client/socket.io.js"></script>
+    <script type="text/javascript" src="../bin/angular-io.js"></script>
+    <script type="text/javascript">
+        angular.module('testApp', ['angular-io'])
+            .config(['$ioProvider', function($ioProvider) {
+                $ioProvider.connect('http://socket.io/');
+            }])
+            .controller('testController', ['$scope', '$io', function($scope, $io) {
+                $io.default.emit('message', 'I am in.');
+                $scope.status = 'Idle';
+                $scope.messages = [];
+            }]);
+    </script>
+</body>
+</html>

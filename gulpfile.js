@@ -5,7 +5,7 @@ var rename = require("gulp-rename");
 
 gulp.task('default', function() {
   gulp.src('src/**/*.js')
-    .pipe(concat('angular-socket.js'))
+    .pipe(concat('angular-io.js'))
     .pipe(gulp.dest('bin/'))
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
