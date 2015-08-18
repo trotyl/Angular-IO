@@ -1,0 +1,23 @@
+{
+  "name": "Angular-Socket",
+  "version": "0.0.1",
+  "homepage": "https://github.com/trotyl/Angular-Socket",
+  "authors": [
+    "Trotyl Yu <trotyl@qq.com>"
+  ],
+  "description": "A concise, reliable and powerful library to make use of Socket.io in Angular.js.",
+  "main": "bin/angular-socket.js",
+  "keywords": [
+    "Angular",
+    "Socket.io",
+    "WebSocket"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
