@@ -61,6 +61,8 @@ The library support both Directive operation and Service operation.
 
 The documentation is on the way. The simple description on directive is:
 
+The single `io` attribute is equal to `io="default"` .
+
 The `io="name" io-event="expression"` equals to :
 
 ```js
