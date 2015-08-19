@@ -5,18 +5,31 @@ angular.module('angular-io', [])
       throw new ReferenceError('The Socket.io script is needed!');
     }
 
-    var socketCache = {};
+    var source = io;
+    var registerCache = {};
 
     this.connect = function(url) {
       this.register('default', url);
     };
 
     this.register = function (name, url) {
-      socketCache[name] = io(url);
+      registerCache[name] = url;
+    };
+
+    this.source = function (src) {
+      source = src;
     };
 
     this.$get = [function () {
-      return socketCache;
+      var service = {
+
+      };
+
+      for(var name in registerCache) {
+        service[name] = source(registerCache[name]);
+      }
+
+      return service;
     }];
 
   }])
